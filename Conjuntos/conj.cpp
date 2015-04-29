@@ -87,22 +87,15 @@ conj& conj::operator=(const conj& cj2){
 }
 
 conj conj::operator+(const conj& cj2) const{
-    elo *q, *p1 = prim, *p2 = cj2.prim, *ult = NULL; conj uniao;
-    while ( (p1 != NULL) || (p2 != NULL) ){
-    }
-    if ( (p1 != NULL) && ( (p2 == NULL) || (p1->dado < p2->dado))){ q = new elo(p1->dado);
+    elo *q, *p1 = prim, *p2 = cj2.prim, *ult = NULL;
+    conj uniao;
+    
+    while ( (p1 != NULL) && (p2 != NULL) ){
+        uniao.insere(p1->dado);
+        uniao.insere(p2->dado);
         p1 = p1->prox;
-    } else {
-        q = new elo(p2->dado);
-        if ((p1 != NULL) && (p1->dado == p2->dado))
-            p1 = p1->prox;
         p2 = p2->prox;
     }
-    if (ult == NULL)
-        uniao.prim = q;
-    else
-        ult->prox = q;
-    ult = q;
     return uniao;
 }
 
@@ -179,9 +172,26 @@ int conj::tamanho() const{
     
 }
 
+
+
 void conj::imprime() const{
     elo *p;
     cout << "Elementos do conjunto" << endl; for(p = prim; p != NULL; p = p->prox)
         cout << p->dado << ' ';
     cout << endl;
+}
+
+
+conj conj::operator<(const conj& cj2) const{
+    elo * p1 = prim;
+    elo * p2 = cj2.prim;
+    conj diff;
+    
+    while (p1 != NULL){
+        if(!cj2.pertence(p1->dado)){
+            diff.insere(p1->dado);
+        }
+        p1 = p1->prox;
+    }
+    return diff;
 }
