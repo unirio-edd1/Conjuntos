@@ -181,7 +181,10 @@ void conj::imprime() const{
 }
 
 
-conj conj::operator<(const conj& cj2) const{
+bool conj::operator<(const conj& cj2) const{
+    if cj2.tamanho() > tamanho()
+        return false;
+    
     elo * p1 = prim;
     conj diff;
     
@@ -191,5 +194,7 @@ conj conj::operator<(const conj& cj2) const{
         }
         p1 = p1->prox;
     }
-    return diff;
+    if ((tamanho() - diff.tamanho()) == cj2.tamanho())
+        return true;
+    return false;
 }

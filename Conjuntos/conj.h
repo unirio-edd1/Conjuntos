@@ -41,6 +41,7 @@ public:
     conj operator+(const conj& cj2) const;  /* União */
     conj operator*(const conj& cj2) const;  /* Intersecção */
     conj operator-(const conj& cj2) const;  /* Diferenca */
+    bool operator<(const conj& cj2) const;  /* Subconjunto */
     int tamanho() const;  /* número de elementos */
     void imprime() const;
 };

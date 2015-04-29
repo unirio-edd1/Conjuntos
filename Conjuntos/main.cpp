@@ -44,6 +44,19 @@ int main(){
     cout << "Imprimindo diferenca"<<endl;
     c3.imprime();
     
+    if ( c3 < c2)
+        cout << "c3 eh subconjunto de c2"<<endl;
+    else
+        cout << "c3 nao eh subconjunto de c2"<<endl;
+    
+    c4.insere(1);
+    c3.imprime();
+    
+    if ( c4 < c3)
+        cout << "c4 eh subconjunto de c3"<<endl;
+    else
+        cout << "c4 nao eh subconjunto de c3"<<endl;
+    
     system("PAUSE");
     return 1;
     
