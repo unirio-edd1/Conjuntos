@@ -173,7 +173,6 @@ int conj::tamanho() const{
 }
 
 
-
 void conj::imprime() const{
     elo *p;
     cout << "Elementos do conjunto" << endl; for(p = prim; p != NULL; p = p->prox)
@@ -184,7 +183,6 @@ void conj::imprime() const{
 
 conj conj::operator<(const conj& cj2) const{
     elo * p1 = prim;
-    elo * p2 = cj2.prim;
     conj diff;
     
     while (p1 != NULL){
